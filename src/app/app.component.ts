@@ -1,4 +1,8 @@
 import { Component } from '@angular/core';
+import { AuthService } from './servises/auth.service';
+
+
+
 
 @Component({
   selector: 'app-root',
@@ -7,4 +11,12 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'NG-Chat';
+
+  
+  constructor(private authServ:AuthService) {
+  }
+
+  public signInWithGoogle(){
+    this.authServ.signInWithGoogle();
+  }
 }

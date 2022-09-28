@@ -17,6 +17,7 @@ export class AppComponent {
   }
 
   public signInWithGoogle(){
+    debugger
     this.authServ.signInWithGoogle();
   }
 }

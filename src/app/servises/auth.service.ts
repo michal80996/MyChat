@@ -16,6 +16,7 @@ export class AuthService {
 
 public signInWithGoogle(){
   this.AuthLogin(new firebase.default.auth.GoogleAuthProvider());
+  
 }
 
   private AuthLogin(provider:firebase.default.auth.AuthProvider){
@@ -24,10 +25,10 @@ public signInWithGoogle(){
     }); 
   }
 
-  private setUser(user?:User):Promise<void> | void{
+  private setUser(user:User):Promise<void> | void{
     if(!user) return;
     const userRef:AngularFirestoreDocument<User>= this.afs.doc(
-      `users/${user.uid}`
+      `allUsers/${user.uid}`
     ) 
     const userData:User ={
       uid: user.uid,
@@ -35,6 +36,7 @@ public signInWithGoogle(){
       dispayName:user.dispayName,
       PhotoUrl:user.PhotoUrl
     }  
+    
     return userRef.set(userData,
       {
         merge:true
